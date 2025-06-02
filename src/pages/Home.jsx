@@ -39,25 +39,25 @@ const Home = () => {
               </div>
             </div>
             
-            {/* Desktop Navigation */}
+{/* Desktop Navigation */}
             <div className="hidden md:flex space-x-1">
               {navItems.map((item, index) => (
-                <motion.button
-                  key={item.label}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-200 ${
-                    item.active 
-                      ? 'bg-primary text-white shadow-card' 
-                      : 'text-surface-600 hover:bg-surface-100'
-                  }`}
-                >
-                  <ApperIcon name={item.icon} className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
-                </motion.button>
+                <Link key={item.label} to={item.path}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-200 ${
+                      location.pathname === item.path
+                        ? 'bg-primary text-white shadow-card' 
+                        : 'text-surface-600 hover:bg-surface-100'
+                    }`}
+                  >
+                    <ApperIcon name={item.icon} className="w-4 h-4" />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </motion.div>
+                </Link>
               ))}
             </div>
-
             <div className="flex items-center space-x-3">
               <motion.button
                 whileHover={{ scale: 1.05 }}
