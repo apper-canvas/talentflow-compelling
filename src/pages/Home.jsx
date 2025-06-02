@@ -76,22 +76,23 @@ const Home = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation */}
+{/* Mobile Navigation */}
       <div className="md:hidden bg-white border-t border-surface-200 fixed bottom-0 left-0 right-0 z-50">
         <div className="grid grid-cols-5 gap-1 p-2">
           {navItems.map((item, index) => (
-            <motion.button
-              key={item.label}
-              whileTap={{ scale: 0.95 }}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-200 ${
-                item.active 
-                  ? 'bg-primary text-white' 
-                  : 'text-surface-600 hover:bg-surface-100'
-              }`}
-            >
-              <ApperIcon name={item.icon} className="w-5 h-5 mb-1" />
-              <span className="text-xs font-medium">{item.label}</span>
-            </motion.button>
+            <Link key={item.label} to={item.path}>
+              <motion.div
+                whileTap={{ scale: 0.95 }}
+                className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-200 ${
+                  location.pathname === item.path
+                    ? 'bg-primary text-white' 
+                    : 'text-surface-600 hover:bg-surface-100'
+                }`}
+              >
+                <ApperIcon name={item.icon} className="w-5 h-5 mb-1" />
+                <span className="text-xs font-medium">{item.label}</span>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
